@@ -24,6 +24,9 @@ if config["design"]["paired"]:
 
 		message: ''' --- Trimming  --- '''
 
+		singularity:
+		        "docker://bisnow33/rnadisign:bbmapfd"
+
 		shell: ' bbduk.sh in1="{input.r1}" in2="{input.r2}" out1="{output.r1}" out2="{output.r2}" \
 			ref="{input.adapters}" minlen=25 ktrim=r k=22 qtrim=rl trimq=20 hdist=1 tpe tbo ziplevel=7 >{log} 2>&1'
 
@@ -45,6 +48,9 @@ else:
 		priority: 90
 
 		message: ''' --- Trimming  --- '''
+		
+		singularity:
+		        "docker://bisnow33/rnadisign:bbmapfd"
 
 		shell: ' bbduk.sh in="{input.r}" out="{output.r}" \
 			ref="{input.adapters}" minlen=25 ktrim=r k=22 qtrim=rl trimq=20 hdist=1 tpe tbo ziplevel=7 >{log} 2>&1 '

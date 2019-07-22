@@ -89,6 +89,9 @@ rule get_reference_files:	# Règle qui récupère le génome de référence ains
 
 	message: ''' --- downloading fasta and gtf files --- '''
 
+	singularity:
+		"docker://bisnow33/rnadisign:gffreadfd"
+
 	shell: ''' 
 		wget {params.get_genome}; mv {params.fasta_name} {output.fasta}
 		wget {params.get_transcripto}; mv {params.transcripto_name} {output.transcripto}
